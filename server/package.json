@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "dev": "tsx --watch ./src/index.ts"
   },
   "author": "",
@@ -24,6 +24,7 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "morgan": "^1.10.0",
+    "tsc-alias": "^1.8.10",
     "zod": "^3.23.8"
   }
 }

@@ -10,6 +10,10 @@ function App() {
     onSuccess: () => refetch(),
   });
 
+  const deleteMutation = trpc.task.deleteTask.useMutation({
+    onSuccess: () => refetch(),
+  });
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
   };
@@ -18,6 +22,10 @@ function App() {
     setTitle("");
     mutation.mutate({ title });
     event.preventDefault();
+  };
+
+  const handleDelete = (id: number) => {
+    deleteMutation.mutate(id);
   };
 
   if (isLoading) return <div>loading</div>;
@@ -29,6 +37,7 @@ function App() {
           <Fragment key={item.id}>
             <div>{item.title}</div>
             <div>{item.createdAt}</div>
+            <button onClick={() => handleDelete(item.id)}>Delete</button>
           </Fragment>
         ))}
         <form onSubmit={handleSubmit}>
